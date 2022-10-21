@@ -1,12 +1,8 @@
 #pragma once
 
-#define WIFI_SSID                    "xinyuandianzi"
-#define WIFI_PASSWORLD               "AA15994823428"
-
-// #define WIFI_SSID                    "ChinaNet-A179"
-// #define WIFI_PASSWORLD               "88888888"
-
-
+#define NUMBERS_OF_CIRCLES  15
+#define SPEED_UP            true  // drops speed up as they get bigger
+#define RANDOM_SPEED        true  // drops have a random grow  speed
 
 /*ESP32S3*/
 #define PIN_LCD_BL                   38

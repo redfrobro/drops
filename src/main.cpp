@@ -4,8 +4,6 @@
 #include "pin_config.h"
 #include "Drop.h"
 
-#define NUMBERS_OF_CIRCLES 10
-
 TFT_eSPI tft = TFT_eSPI();
 Drop *drops[NUMBERS_OF_CIRCLES];
 uint16_t color;
@@ -20,7 +18,7 @@ void setup() {
 
   tft.setRotation(3);
   randomSeed(analogRead(0));
-
+  // initilize the drops
   for (int i = 0; i < NUMBERS_OF_CIRCLES; ++i) {
     drops[i] = new Drop(tft.width(), tft.height());
   }
@@ -35,8 +33,8 @@ void loop() {
     tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius, color);
   }
   
-  delay(30);
-
+  delay(40);
+  // erase the circles before the next loop
   for (int i = 0; i < NUMBERS_OF_CIRCLES; ++i) {
     tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius, TFT_BLACK);
   }
