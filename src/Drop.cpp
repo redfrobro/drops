@@ -15,7 +15,7 @@ Drop::Drop(int width, int height)
     }
     else
     {
-        speed = 1;
+        speed = 2;
     }
     r = random(255);
     g = random(255);
