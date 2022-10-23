@@ -5,7 +5,7 @@
 #include "Drop.h"
 
 TFT_eSPI tft = TFT_eSPI();
-Drop *drops[NUMBERS_OF_CIRCLES];
+std::array<Drop, NUMBERS_OF_CIRCLES> drops = {};
 uint16_t color;
 
 
@@ -19,24 +19,24 @@ void setup() {
   tft.setRotation(3);
   randomSeed(analogRead(0));
   // initilize the drops
-  for (int i = 0; i < NUMBERS_OF_CIRCLES; ++i) {
-    drops[i] = new Drop(tft.width(), tft.height());
+  for(Drop& drop : drops) {
+    //drop.Drop(tft.width(), tft.height());
   }
   
 }
 
 void loop() {
 
-  for (int i = 0; i < NUMBERS_OF_CIRCLES; ++i) {
-    drops[i]->nextFrame();
-    color = tft.color565(drops[i]->r, drops[i]->g, drops[i]->b);
-    tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius, color);
+  for(Drop& drop : drops) {
+    drop.nextFrame();
+    color = tft.color565(drop.r, drop.g, drop.b);
+    tft.drawCircle(drop.x, drop.y, drop.radius, color);
   }
   
   delay(40);
   // erase the circles before the next loop
-  for (int i = 0; i < NUMBERS_OF_CIRCLES; ++i) {
-    tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius, TFT_BLACK);
+  for(Drop& drop : drops) {
+    tft.drawCircle(drop.x, drop.y, drop.radius, TFT_BLACK);
   }
   
 }

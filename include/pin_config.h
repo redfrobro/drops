@@ -2,7 +2,7 @@
 
 #define NUMBERS_OF_CIRCLES  15      // it starts to get real flickery over 50
 #define SPEED_UP            false  // drops speed up as they get bigger
-#define RANDOM_SPEED        true   // drops have a random grow  speed
+#define RANDOM_SPEED        false   // drops have a random grow  speed
 
 /*ESP32S3*/
 #define PIN_LCD_BL                   38
