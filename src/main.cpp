@@ -20,7 +20,7 @@ void setup() {
   randomSeed(analogRead(0));
   // initilize the drops
   for(Drop& drop : drops) {
-    //drop.Drop(tft.width(), tft.height());
+    drop.SetWidthHeight(tft.width(), tft.height());
   }
   
 }

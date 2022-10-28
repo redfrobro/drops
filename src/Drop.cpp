@@ -3,10 +3,9 @@
 #include "Arduino.h"
 #include "pin_config.h"
 
-Drop::Drop(int width, int height)
+Drop::Drop()
 {
-    _height = height;
-    _width = width;
+    
     radius = random(MAX_RADIUS);
     maxRadius = MAX_RADIUS + random(-20, 20);
     if (RANDOM_SPEED)
@@ -20,9 +19,15 @@ Drop::Drop(int width, int height)
     r = random(255);
     g = random(255);
     b = random(255);
+    
+};
+
+void Drop::SetWidthHeight(int width, int height) {
+    _height = height;
+    _width = width;
     x = random(20, _width - 20);
     y = random(20, _height - 20);
-};
+}
 
 void Drop::nextFrame()
 {

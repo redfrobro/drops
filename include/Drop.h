@@ -15,7 +15,8 @@ private:
     int speed;
 
 public:
-    Drop(int width, int height);
+    Drop();
+    void SetWidthHeight(int width, int height);
     void nextFrame();
     int radius;
     int x;
