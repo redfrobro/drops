@@ -7,6 +7,7 @@
 TFT_eSPI tft = TFT_eSPI();
 Drop *drops[NUMBERS_OF_CIRCLES];
 uint16_t color;
+uint16_t fadeColor;
 
 
 void setup() {
@@ -30,13 +31,23 @@ void loop() {
   for (int i = 0; i < NUMBERS_OF_CIRCLES; ++i) {
     drops[i]->nextFrame();
     color = tft.color565(drops[i]->r, drops[i]->g, drops[i]->b);
+    fadeColor = tft.color565(drops[i]->r / 2, drops[i]->g / 2, drops[i]->b / 2);
     tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius, color);
+    if (FADE) {
+      tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius - drops[i]->getSpeed(), fadeColor);
+      tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius - drops[i]->getSpeed() * 2, fadeColor);
+    }
   }
   
   delay(40);
   // erase the circles before the next loop
   for (int i = 0; i < NUMBERS_OF_CIRCLES; ++i) {
     tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius, TFT_BLACK);
+    if (FADE) {
+      tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius - drops[i]->getSpeed(), TFT_BLACK);
+      tft.drawCircle(drops[i]->x, drops[i]->y, drops[i]->radius - drops[i]->getSpeed() * 2, TFT_BLACK);
+
+    }
   }
   
 }

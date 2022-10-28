@@ -15,7 +15,7 @@ Drop::Drop(int width, int height)
     }
     else
     {
-        speed = 2;
+        speed = DEFAULT_SPEED;
     }
     r = random(255);
     g = random(255);
@@ -47,4 +47,8 @@ void Drop::nextFrame()
         g = random(255);
         b = random(255);
     }
+}
+
+int Drop::getSpeed() {
+    return speed;
 }
